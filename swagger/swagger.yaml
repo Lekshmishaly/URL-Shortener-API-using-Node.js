@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: URL Shortener API
+  version: 1.0.0
+paths:
+  /shorten:
+    post:
+      summary: Shorten a URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                originalUrl:
+                  type: string
+      responses:
+        201:
+          description: URL shortened
+        400:
+          description: Invalid URL
+
+  /{shortId}:
+    get:
+      summary: Redirect to the original URL
+      parameters:
+        - in: path
+          name: shortId
+          required: true
+          schema:
+            type: string
+      responses:
+        302:
+          description: Redirects to original URL
+        404:
+          description: Short URL not found
+
+  /urls:
+    get:
+      summary: Get all shortened URLs
+      responses:
+        200:
+          description: A list of URLs
