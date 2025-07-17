@@ -1,11 +1,11 @@
 import dotenv from "dotenv";
-dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import urlRoutes from "./route/urlRoutes.js";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
 
+dotenv.config();
 const swaggerDocument = YAML.load("./swagger/swagger.yaml");
 
 const app = express();
